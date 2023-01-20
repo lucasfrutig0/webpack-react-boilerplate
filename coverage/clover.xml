@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1674243850720" clover="3.2.0">
+  <project timestamp="1674243850720" name="All files">
+    <metrics statements="16" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2" elements="20" coveredelements="12" complexity="0" loc="16" ncloc="16" packages="1" files="4" classes="4"/>
+    <file name="App.tsx" path="/home/lucas/workspace/webpack-react-boilerplate/src/App.tsx">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+    </file>
+    <file name="ClickCounter.tsx" path="/home/lucas/workspace/webpack-react-boilerplate/src/ClickCounter.tsx">
+      <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
+    </file>
+    <file name="declarations.d.ts" path="/home/lucas/workspace/webpack-react-boilerplate/src/declarations.d.ts">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+    </file>
+    <file name="main.tsx" path="/home/lucas/workspace/webpack-react-boilerplate/src/main.tsx">
+      <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="1" count="0" type="stmt"/>
+      <line num="2" count="0" type="stmt"/>
+      <line num="3" count="0" type="stmt"/>
+      <line num="5" count="0" type="stmt"/>
+      <line num="6" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>

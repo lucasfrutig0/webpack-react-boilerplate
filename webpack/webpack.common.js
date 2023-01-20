@@ -1,34 +1,49 @@
 const path = require('path')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/main.tsx'),
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.mjs'],
   },
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/,
+        test: /].(js|jsx)$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-          },
-        ],
+        loader: 'babel-loader',
+        options: {presets: ['@babel/env']},
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.tsx?$/,
+        include: paths.src,
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+        },
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset/inline',
+        test: /\.svg$/,
+        use: ['@svgr/webpack', 'url-loader'],
+      },
+
+      // Images: Copy image files to build folder
+      {test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource'},
+
+      // Fonts and SVGs: Inline files
+      {test: /\.(woff(2)?|eot|ttf|otf|)$/, type: 'asset/inline'},
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
       },
     ],
   },
@@ -38,7 +53,11 @@ module.exports = {
   },
   mode: 'development',
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
+      title: 'React Webpack - Base Project',
+      favicon: paths.src + '/Assets/icons/favicon.png',
+      filename: 'index.html', // output file
       template: path.resolve(__dirname, '..', './src/index.html'),
     }),
     new CopyPlugin({
@@ -49,7 +68,15 @@ module.exports = {
             noErrorOnMissing: true
         }
     ]
-    })
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
+    }),
+
+    new ESLintPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx', 'mjs'],
+    }),
   ],
   // stats: 'errors-only',
 }
