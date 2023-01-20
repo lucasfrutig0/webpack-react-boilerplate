@@ -5,13 +5,13 @@ import { ClickCounter } from './ClickCounter'
 
 export const App = () => {
   return (
-    <>
+    <div className="wrapper day dark-scheme">
       <h1>
         Webpack React Template - {process.env.NODE_ENV} {process.env.name}
       </h1>
       <img src={IMAGE} alt="react logo" width="180px" height="auto" />
       <img src={LOGO} alt="react logo" width="300px" />
       <ClickCounter />
-    </>
+    </div>
   )
 }
