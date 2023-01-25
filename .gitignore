@@ -1,6 +1,9 @@
 build
 node_modules
 
+#test
+coverage
+
 #env 
 .env.development
 .env.production

@@ -2,6 +2,7 @@
 const path = require('path')
 const Dotenv = require('dotenv-webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -14,6 +15,18 @@ module.exports = {
     new Dotenv({
       path: path.resolve(__dirname, '..', './.env.development'),
     }),
-    new ReactRefreshWebpackPlugin()
+    new ReactRefreshWebpackPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      async: false,
+      typescript: {
+        configOverwrite: {
+          exclude: ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
+          compilerOptions: {
+            noUnusedLocals: false,
+            noUnusedParameters: false
+          }
+        }
+      }
+    })
   ]
 }
