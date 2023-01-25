@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/main.tsx'),
@@ -20,7 +21,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        include: paths.src,
+        include: path.src,
         loader: 'ts-loader',
         options: {
           transpileOnly: true,
@@ -56,7 +57,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'React Webpack - Base Project',
-      favicon: paths.src + '/Assets/icons/favicon.png',
+      // favicon: path.src + '/assets/icons/favicon.png',
       filename: 'index.html', // output file
       template: path.resolve(__dirname, '..', './src/index.html'),
     }),

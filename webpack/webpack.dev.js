@@ -1,4 +1,5 @@
-const Webpack = require('webpack')
+/* eslint-disable @typescript-eslint/no-var-requires */
+const Dotenv = require('dotenv-webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
@@ -9,8 +10,8 @@ module.exports = {
   },
   devtool: 'cheap-module-source-map',
   plugins: [
-    new Webpack.DefinePlugin({
-      'process.env.name': JSON.stringify('aloha')
+    new Dotenv({
+      path: path.resolve(__dirname, '..', './.env.development'),
     }),
     new ReactRefreshWebpackPlugin()
   ]

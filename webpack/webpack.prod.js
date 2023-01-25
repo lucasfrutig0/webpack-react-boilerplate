@@ -1,12 +1,13 @@
-const Webpack = require('webpack')
+/* eslint-disable @typescript-eslint/no-var-requires */
+const Dotenv = require('dotenv-webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
   plugins: [
-    new Webpack.DefinePlugin({
-      'process.env.name': JSON.stringify('aloha-prod')
+    new Dotenv({
+      path: path.resolve(__dirname, '..', './.env.production'),
     }),
     new BundleAnalyzerPlugin(),
   ]
